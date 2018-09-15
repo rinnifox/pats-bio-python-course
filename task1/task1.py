@@ -1,12 +1,14 @@
+#  This function should return sorted list of distinct elements of e
 def unique(e):
     return sorted(set(e))
 
-
+print('unique results:')
 print(unique([1, 2, 1, 3]))
 print(unique({5, 1, 3}))
 print(unique('adsfasdf'))
 
 
+#  This function should return transposed dict d. It is garantueed that all the values of dict d are distinct
 def transposeDict(d):
     transpose = dict()
     for key, value in d.items():
@@ -14,34 +16,37 @@ def transposeDict(d):
     return transpose
 
 
+print('transpose results')
 print(transposeDict({1: 'a', 2: 'b'}))
 print(transposeDict({1: 1}))
 print(transposeDict({}))
 
 
+#  This function should return minimal positive integer which is not present at list e
 def mex(e):
-    min_num = 2
-
     if 1 not in e:
-        print(1)
+        return 1
     else:
         for elem in e:
-            next_num = elem + 1
-            if elem != min_num:
-                if next_num not in e:
-                    if next_num < min_num:
-                        min_num=next_num
-            else:
-                min_num = next_num
+            if type(elem) == int:
+                if elem+1 not in e:
+                    return elem+1
 
 
-mex([1, 2, 3])
-mex(['asdf', 123])
-mex([0, 0, 1, 0])
+print('mex results:')
+print(mex([1, 2, 3]))
+print(mex(['asdf', 123]))
+print(mex([0, 0, 1, 0]))
 
 
+#  This function should return dict with counts of every symbol from string s
 def frequencyDict(s):
-    pass
+    numbers = {}
+    for elem in s:
+        number = s.count(elem)
+        numbers.update({elem: number})
+    return numbers
 
-frequencyDict('')
-frequencyDict('abacaba')
+print('frequency results')
+print(frequencyDict(''))
+print(frequencyDict('abacaba'))
