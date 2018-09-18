@@ -12,6 +12,7 @@ def transposeDict(d):
 def mex(e):
     return 1 if 1 not in e else min([x+1 for x in [elem for elem in e if type(elem) == int] if x+1 not in e])
 
+
 #  This function should return dict with counts of every symbol from string
 def frequencyDict(s):
     return {c:s.count(c) for c in sorted(set(s))}
