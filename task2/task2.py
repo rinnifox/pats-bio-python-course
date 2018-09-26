@@ -1,31 +1,31 @@
-#  This function returns string representing this list
-def list_to_string(a):
+#  Returns string representing this list
+def listToString(a):
     return str(a)
 
 
-# This function adds border around a picture (nonempty list of nonempty strings of equal lengths).
-# !!! Correct output - by using "for" !!! Using '\n'.join(b) -> not a list -> doesn't pass the assertion tests.
-def add_border(a):
-    b = []
+# Adds border around a picture
+def addBorder(a):
+    newlist = []
     for elem in a:
-        b.append('|'+elem+'|')
-    b.insert(0, '+'+'-'*len(a[0])+'+')
-    b.append('+'+'-'*len(a[1])+'+')
-    return b
+        newlist.append('|'+elem+'|')
+    newlist.insert(0, '+'+'-'*len(a[0])+'+')
+    newlist.append('+'+'-'*len(a[1])+'+')
+    return newlist
 
 
-# This function returns reductions of strings of list
+# Returns reductions of strings of list
 def shorting(e):
     new_list = []
     for elem in e:
         if len(elem) <= 10:
             new_list.append(elem)
         else:
-            new_list.append(str(elem[0]) + str(len(elem)-2) + str(elem[len(elem)-1]))
+            new_list.append(str(elem[0]) + str(len(elem)-2) +
+                            str(elem[len(elem)-1]))
     return new_list
 
 
-# This function returns number of participants who will advance to the next round
+# Returns number of participants who will advance to the next round
 def competition(e, k):
     next_round = []
     for elem in e:
@@ -36,8 +36,8 @@ def competition(e, k):
     return len(next_round)
 
 
-# This functiom returns sorted list of integers s = i ** 2 + j ** 2 if (i, j) is 'good'.
-def good_pairs(a, b):
+# Returns sorted list of integers s = i ** 2 + j ** 2 if (i, j) is 'good'
+def goodPairs(a, b):
     s = []
     for i in a:
         for j in b:
@@ -46,8 +46,8 @@ def good_pairs(a, b):
     return sorted(s)
 
 
-# This function returns list a of length 2 * n - 1. Its i-th element is list of some zeros.
-def make_shell(n):
+# Returns list a of length 2 * n - 1. Its i-th element is list of some zeros
+def makeShell(n):
     shell = []
     i = 1
     j = n-1
@@ -61,23 +61,28 @@ def make_shell(n):
 
 
 if __name__ == '__main__':
-    assert list_to_string([]) == "[]"
-    assert list_to_string([1, 2, 3]) == "[1, 2, 3]"
-    assert list_to_string([-5]) == "[-5]"
+    assert listToString([]) == "[]"
+    assert listToString([1, 2, 3]) == "[1, 2, 3]"
+    assert listToString([-5]) == "[-5]"
 
-    assert add_border(['abc', 'def']) == ['+---+', '|abc|', '|def|', '+---+']
+    assert addBorder(['abc',
+                      'def']) == ['+---+',
+                                  '|abc|',
+                                  '|def|',
+                                  '+---+']
 
-    assert shorting(['word', 'localization', 'internationalization', 'pneumonoultramicroscopicsilicovolcanoconiosis']) \
+    assert shorting(['word', 'localization', 'internationalization',
+                     'pneumonoultramicroscopicsilicovolcanoconiosis']) \
         == ['word', 'l10n', 'i18n', 'p43s']
 
-    assert competition([5, 4, 3, 2, 1], 2) == 3            # Participants with scores 5, 4, 3 are advanced
-    assert competition([1, 0, 0, 0], 3) == 1               # Participants with zeros won't advance
-    assert competition([10, 9, 8, 7, 7, 7, 5, 5], 4) == 6  # Participants with scores 10, 9, 8, 7, 7, 7 are advanced
+    assert competition([5, 4, 3, 2, 1], 2) == 3
+    assert competition([1, 0, 0, 0], 3) == 1
+    assert competition([10, 9, 8, 7, 7, 7, 5, 5], 4) == 6
 
-    assert good_pairs([4, 5, 6, 7, 8], [8, 9, 10, 11, 12]) == [128, 160, 180]
-    assert good_pairs([2], [2]) == [8]
-    assert good_pairs([7, 8, 9], [5, 3, 2]) == []
+    assert goodPairs([4, 5, 6, 7, 8], [8, 9, 10, 11, 12]) == [128, 160, 180]
+    assert goodPairs([2], [2]) == [8]
+    assert goodPairs([7, 8, 9], [5, 3, 2]) == []
 
-    assert make_shell(1) == [[0]]
-    assert make_shell(2) == [[0], [0, 0], [0]]
-    assert make_shell(3) == [[0], [0, 0], [0, 0, 0], [0, 0], [0]]
+    assert makeShell(1) == [[0]]
+    assert makeShell(2) == [[0], [0, 0], [0]]
+    assert makeShell(3) == [[0], [0, 0], [0, 0, 0], [0, 0], [0]]
