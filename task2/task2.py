@@ -7,9 +7,9 @@ def listToString(a):
 def addBorder(a):
     newlist = []
     for elem in a:
-        newlist.append('|'+elem+'|')
-    newlist.insert(0, '+'+'-'*len(a[0])+'+')
-    newlist.append('+'+'-'*len(a[1])+'+')
+        newlist.append('|' + elem + '|')
+    newlist.insert(0, '+' + '-' * len(a[0]) + '+')
+    newlist.append('+' + '-' * len(a[0]) + '+')
     return newlist
 
 
@@ -21,7 +21,7 @@ def shorting(e):
             new_list.append(elem)
         else:
             new_list.append(str(elem[0]) + str(len(elem)-2) +
-                            str(elem[len(elem)-1]))
+                            str(elem[len(elem) - 1]))
     return new_list
 
 
@@ -41,9 +41,9 @@ def goodPairs(a, b):
     s = []
     for i in a:
         for j in b:
-            if (i*j) % (i+j) == 0:
-                s.append(i**2+j**2)
-    return sorted(s)
+            if (i * j) % (i + j) == 0:
+                s.append(i ** 2 + j ** 2)
+    return sorted(set(s))
 
 
 # Returns list a of length 2 * n - 1. Its i-th element is list of some zeros
@@ -52,9 +52,9 @@ def makeShell(n):
     i = 1
     j = n-1
     for first in range(n):
-        shell.append([0]*i)
+        shell.append([0] * i)
         i += 1
-    for second in range(n, 2*n-1):
+    for second in range(n, 2 * n - 1):
         shell.append([0] * j)
         j -= 1
     return shell
