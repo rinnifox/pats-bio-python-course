@@ -13,7 +13,7 @@ def squares(a):
 
 # Yields elements from list n times
 def repeatntimes(elems, n):
-    rep = itertools.repeat(elems, n)
+    rep = itertools.tee(elems, n)
     for elem in rep:
         yield from elem
 
