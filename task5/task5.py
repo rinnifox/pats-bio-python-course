@@ -22,7 +22,8 @@ def correctbracketsequences(n):
             yield prefix
         else:
             for i in ['(', ')']:
-                if len(prefix + i) <= (2 * n) and balance >= 0:
+                newbalance = balance + (1 if i == '(' else -1)
+                if len(prefix + i) <= (2 * n) and newbalance >= 0:
                     yield from brackets_gen(n, prefix=prefix + i)
 
     return list(brackets_gen(n))
