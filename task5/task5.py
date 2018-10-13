@@ -1,3 +1,4 @@
+# Generates the list of all permutations of size n
 def permutations(n):
 
     def perm_gen(n,  prefix=[]):
@@ -10,6 +11,7 @@ def permutations(n):
     return list(perm_gen(n))
 
 
+# Generates the list of all correct bracket sequences with n pairs of brackets
 def correctbracketsequences(n):
 
     def brackets_gen(n, prefix=''):
@@ -26,6 +28,7 @@ def correctbracketsequences(n):
     return list(brackets_gen(n))
 
 
+# Generates the list of combinations of numbers (1...n) with repeats of size k
 def combinationswithrepeats(n, k):
 
     def comb_gen(n, k, prefix=[]):
@@ -42,6 +45,7 @@ def combinationswithrepeats(n, k):
     return list(comb_gen(n, k))
 
 
+# Generates the list of all unordered partitions of number n
 def unorderedpartitions(n):
 
     def part_gen(n, prefix=[]):
