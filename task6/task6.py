@@ -6,7 +6,7 @@ def getdimension(a):
     return np.ndim(a)
 
 
-# Finds the diagonal.of 2-dimensional square array a
+# Finds the diagonal of 2-dimensional square array a
 def getdiagonal(a):
     return np.diagonal(a)
 
@@ -21,7 +21,7 @@ def cutarray(a, minvalue, maxvalue):
 
 # Returns tuple with two values:
 #   mean value of entries of a;
-#   mariance of entries of a
+#   variance of entries of a
 def getmoments(a):
     return tuple([np.mean(a), np.var(a)])
 
