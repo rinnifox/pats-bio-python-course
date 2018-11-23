@@ -53,6 +53,8 @@ def isIPv4(s):
         return False
     else:
         numbers = s.split('.')
+        if len(numbers) > 4:
+            return False
         for number in numbers:
             if number.isdigit():
                 if int(number) < 0 or int(number) > 255:
@@ -220,6 +222,7 @@ if __name__ == "__main__":
     assert not isIPv4('abacaba')
     assert not isIPv4('')
     assert not isIPv4('32.130..60.253')
+    assert not isIPv4('170.216.9.7.155')
     print('isIPv4 - PASSED')
 
     it = pascals()
