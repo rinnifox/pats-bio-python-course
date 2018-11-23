@@ -53,17 +53,14 @@ def isIPv4(s):
         return False
     else:
         numbers = s.split('.')
-        if len(numbers) > 4:
+        if len(numbers) != 4:
             return False
         for number in numbers:
-            if number.isdigit():
-                if int(number) < 0 or int(number) > 255:
-                    return False
-                if number[0] == '0' and len(number) != 1:
-                    return False
-                return True
-            else:
+            if int(number) < 0 or int(number) > 255:
                 return False
+            if number[0] == '0' and len(number) != 1:
+                return False
+        return True
 
 
 def pascals():
