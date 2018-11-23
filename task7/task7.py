@@ -38,10 +38,9 @@ def subpalindrome(s):
             if ispalindrome(s[i:j]):
                 if len(res) < len(s[i:j]):
                     res = s[i:j]
-                elif len(res) == s[i:j]:
+                elif len(res) == len(s[i:j]):
                     if s[i:j] < res:
                         res = s[i:j]
-
     return res
 
 
@@ -49,6 +48,8 @@ def isIPv4(s):
     pattern = r'[^0-9\.]'
     ip_unlike = re.findall(pattern, s)
     if ip_unlike or len(s) == 0:
+        return False
+    elif re.search(r'\.{2,}',s):
         return False
     else:
         numbers = s.split('.')
@@ -209,6 +210,7 @@ if __name__ == "__main__":
     assert subpalindrome('aaaa') == 'aaaa'
     assert subpalindrome('abaxfgf') == 'aba'
     assert subpalindrome('abacabad') == 'abacaba'
+    assert subpalindrome('qfrkktzaggxy') == 'gg'
     print('subpalindrome - PASSED')
 
     assert isIPv4('192.168.0.15')
@@ -217,8 +219,8 @@ if __name__ == "__main__":
     assert not isIPv4('190+2.168.0.0')
     assert not isIPv4('abacaba')
     assert not isIPv4('')
+    assert not isIPv4('32.130..60.253')
     print('isIPv4 - PASSED')
-
 
     it = pascals()
     pasc_list = []
